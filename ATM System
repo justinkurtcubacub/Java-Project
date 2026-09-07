@@ -1,0 +1,96 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int balance = 10000;
+        int cash = 0;
+        int pin = 1234;
+        int inputs = 0;
+        int Selection = 0;
+        int attempts = 3;
+        System.out.println("Welcome to ATM");
+        while (true) {
+            try {
+                System.out.print("Enter your pin: ");
+                inputs = scanner.nextInt();
+                if (inputs == pin){
+                    System.out.println("Access Granted!");
+                    break;
+                }
+                attempts -= 1;
+                if (attempts == 0){
+                    System.out.println("You've Reached the Limits, LOCKING YOUR ATM!");
+                    break;
+                }
+                else{
+                    System.out.println("WRONG PIN!");
+
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("PIN only numbers!");
+                scanner.next();
+            }
+        }
+
+
+        if (inputs == pin) {
+            while (true) {
+                System.out.println("---ATM---");
+                System.out.println("1. Check Balance");
+                System.out.println("2. Deposit");
+                System.out.println("3. Withdraw");
+                System.out.println("4. Exit");
+
+                try {
+                    System.out.print("Your Choice: ");
+                    Selection = scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("ONLY TYPE 1 - 4");
+                    scanner.next();
+                    continue;
+                }
+
+
+                if (Selection == 1)
+                {
+                    System.out.println("Your Bank Account Balance is " + balance);
+                    System.out.println("Your Money on hand is " + cash);
+                }
+                else if (Selection == 2)
+                {
+                    System.out.print("How much you want to Deposit? ");
+                    int Deposit = scanner.nextInt();
+                    if (cash >= Deposit && Deposit > 0) {
+                        balance += Deposit;
+                        cash -= Deposit;
+                        System.out.println("You've Deposited " + Deposit);
+                    }
+                    else
+                    {
+                        System.out.println("You dont have Enough Cash to Deposit!");
+                    }
+
+                } else if (Selection == 3) {
+                    System.out.println("How much you want to Withdraw?");
+                    int withdraw = scanner.nextInt();
+                    if (balance >= withdraw && withdraw > 0) {
+                        cash += withdraw;
+                        balance -= withdraw;
+                        System.out.println("You've Withdrawed " + withdraw);
+                    } else {
+                        System.out.println("You dont have enough balance to withdraw");
+                    }
+
+                } else if (Selection == 4) {
+                    System.out.println("Thank you for using the ATM");
+                    break;
+                } else {
+                    System.out.println("Invalid Inputs Try Again");
+
+                }
+            }
+        }
+    }
+}
