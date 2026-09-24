@@ -1,0 +1,189 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hello World");
+        double price = 20.67;
+        float weight = 70.5f;
+        char grades = 'A';
+        int age = 19;
+        boolean isStudent = true;
+        String name = "Kurt";
+
+        // Arithmetic Operations
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Weight: " + weight);
+        System.out.println("Is Student?: " + isStudent);
+        System.out.println("Grade: " + grades);
+        System.out.println("Price: " + price);
+
+        System.out.print("\nEnter your City: ");
+        String userCity = scanner.next(); // reads one word
+        System.out.println(userCity);
+
+        scanner.nextLine();
+        System.out.print("Enter a Sentence about yourself: ");
+        String fullSentence = scanner.nextLine(); // reads the entire line
+        System.out.println("You said: " + fullSentence);
+
+        int a = 10, b = 3;
+        System.out.println("a + b = " + (a + b));
+        System.out.println("a - b = " + (a - b));
+        System.out.println("a * b = " + (a * b));
+        System.out.println("a / b = " + (a / b));
+        System.out.println("a % b = " + (a % b));
+
+        double x = 10, y = 3;
+        System.out.println("x / y = " + (x / y));
+
+        // Relational Operator
+        System.out.println("\na == b = " + (a == b));
+        System.out.println("a != b = " + (a != b));
+        System.out.println("a > b = " + (a > b));
+        System.out.println("a < b = " + (a < b));
+        System.out.println("a >= b = " + (a >= b));
+        System.out.println("a <= b = " + (a <= b));
+
+        // Logical Operator
+        boolean p = true, q = false;
+        System.out.println("\np&&q: " + (p && q));
+        System.out.println("p || q:" + (p || q));
+        System.out.println("!p: " + (!p));
+        System.out.println("!q:  " + (!q));
+
+        // Assignment
+        int score = 50;
+        score += 10;
+        System.out.println("\nScore after the class += 10: " + score);
+        score *= 2;
+        System.out.println("score after *= 2: " + score);
+
+        // Increment / Decrement Operators
+        int counter = 5;
+        System.out.println("\ncounter ++ (post): " + counter++); // 5
+        System.out.println("counter now: " + counter); // 6
+        System.out.println("++counter (pre): " + ++counter); // 7
+
+        // Control Flow (if/else)
+        System.out.println("Enter your exam score: ");
+        int Examscore = scanner.nextInt();
+
+        if (Examscore >= 90) {
+            System.out.println("Grade: A");
+        } else if (Examscore >= 80) {
+            System.out.println("Grade: B");
+        } else if (Examscore >= 70) {
+            System.out.println("Grade: C ");
+        } else {
+            System.out.println("Grade: F");
+        }
+
+        // Switch Case Statement
+        System.out.print("\nEnter a Day number (1-7): ");
+        int day = scanner.nextInt();
+
+        switch (day) {
+            case 1: System.out.println("Monday"); break;
+            case 2: System.out.println("Tuesday"); break;
+            case 3: System.out.println("Wednesday"); break;
+            case 4: System.out.println("Thursday"); break;
+            case 5: System.out.println("Friday"); break;
+            case 6: System.out.println("Saturday"); break;
+            case 7: System.out.println("Sunday"); break;
+            default: System.out.println("Invalid Day");
+        }
+
+        // Loops (for, while, do while)
+        System.out.println("\nCounting 1 to 5 with a loop:");
+        for (int i = 1; i <= 5; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        // While Loops
+        System.out.println("\nCounting down with a while loop: ");
+        int m = 5;
+        while (m > 0) {
+            System.out.print(m + " ");
+            m--;
+        }
+        System.out.println();
+
+        // Do While Loops
+        System.out.println("\ndo-while example: ");
+        int z = 0;
+        do {
+            System.out.println("z = " + z);
+            z++; //
+        } while (z < 3);
+
+        // Break and Continue
+        System.out.println("\nSkipping 3 using continue, stopping at 7 using break: ");
+        for (int i = 1; i <= 10; i++) {
+            if (i == 3) continue;
+            if (i == 7) break;
+            System.out.print(i + " ");
+        }
+        System.out.println("\n");
+
+        // --- Methods Section Test Calls ---
+        int sum = add(5, 7);
+        System.out.println("5 + 7 = " + sum);
+
+        double sq = square(4.5);
+        System.out.println("4.5 squared = " + sq);
+
+        greet("Maria");
+
+        System.out.println("5! = " + factorial(5));
+
+        System.out.println("multiply(2,3) = " + multiply(2, 3));
+        System.out.println("multiply(2.5,4.0) = " + multiply(2.5, 4.0));
+
+        System.out.println("power(5) = " + power(5));
+        System.out.println("power(5,3) = " + power(5, 3));
+
+        scanner.close();
+    }
+    //Methods
+    public static double square(double n) {
+        return n * n;
+    }
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void greet(String name) {
+        System.out.println("Hello, " + name + "! Welcome to Java.");
+    }
+
+    public static int factorial(int n) {
+        if (n <= 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public static double multiply(double a, double b) {
+        return a * b;
+    }
+
+    public static int power(int base, int exponent) {
+        int result = 1;
+        for (int i = 0; i < exponent; i++) {
+            result *= base;
+        }
+        return result;
+    }
+
+    public static int power(int base) {
+        return power(base, 2);
+    }
+}
